@@ -2,10 +2,33 @@ const express = require('express')
 const router = express.Router()
 const usersController = require('../controllers/usersController')
 const unitsController = require('../controllers/unitsController')
+const jwt = require('jsonwebtoken')
+require('dotenv').config()
+
+const privateKey = process.env.JWT_PRIVATE_KEY
+const publicKey = process.env.JWT_PUBLIC_KEY
+
+
+const verify = function(req, res, next) {
+    jwt.verify(req.cookies.token, privateKey,
+      (err, decoded) => {
+        if (err) {
+          next({
+            status: 401,
+            error: err,
+            message: 'Unauthorized'
+          })
+        } else {
+          req.userCredentials = decoded
+          console.log(decoded)
+          next()
+        }
+      })
+  }
 
 router
-    .get('/users/:ghID', (req, res) => {
-        usersController.getUserById(req.params.ghID).then((user, err) => {
+    .get('/user', verify, (req, res) => {
+        usersController.getUserById(req.userCredentials.ghID).then((user, err) => {
             res.status(200).send(`${user}`)
         })
     })
