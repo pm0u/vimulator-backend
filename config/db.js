@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const dbURI = 'mongodb+srv://admin:0wn4g311@cluster0-gcwnj.gcp.mongodb.net/test?retryWrites=true'
+const dbURI = `${process.env.MONGODB_URI_PRE}${process.env.MONGODB_USER_ID}:${process.env.MONGODB_PW}${process.env.MONGODB_URI_POST}`
 
 const options = {
     useNewUrlParser: true

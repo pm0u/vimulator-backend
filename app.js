@@ -7,6 +7,8 @@ const passport = require('passport')
 const loginRouter = require('./routes/login')
 const apiRouter = require('./routes/api')
 
+require('dotenv').config()
+
 const app = express()
 
 app.use(logger('dev'))

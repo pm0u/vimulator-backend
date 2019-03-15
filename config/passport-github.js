@@ -1,6 +1,5 @@
 const passport = require('passport')
 const GitHubStrategy = require('passport-github').Strategy
-require('dotenv').config()
 
 const callbackURL = process.env.NODE_ENV === 'production' ? `${process.env.SERVER_URL}/login/github/callback` : 'http://localhost:8000/login/github/callback'
 
