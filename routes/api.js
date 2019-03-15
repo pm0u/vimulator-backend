@@ -1,11 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const testController = require('../controllers/testController')
 const usersController = require('../controllers/usersController')
-
-router
-    .get('/tests', testController.listAllTests)
-    .post('/tests', testController.createNewTest)
 
 router
     .get('/users/:ghID', (req, res) => {
