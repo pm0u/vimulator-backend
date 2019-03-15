@@ -22,7 +22,7 @@ router
             if (user.length !== 0) {
                 res.status(200).send(user)
             } else {
-                usersController.newUserAtLogin({displayName,ghID}).then(user => {
+                usersController.newUserAtLogin({ displayName, ghID }).then(user => {
                     res.status(200).send(user)
                 })
             }

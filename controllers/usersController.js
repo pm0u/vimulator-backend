@@ -21,13 +21,7 @@ exports.getUserById = (ghID) => {
 }
 
 exports.getAllUsers = (req, res) => {
-    User.find({}, (err, user) => {
-        if (err) {
-            res.status(500).send(err)
-        } else {
-            res.status(200).send(user)
-        }
-    })
+    return User.find({})
 }
 
 exports.deleteUserByGHID = (ghID) => {
