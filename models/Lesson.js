@@ -8,6 +8,14 @@ const LessonSchema = new Schema({
        type: String,
        required: true
    },
+   cursorPos: {
+       type: mongoose.Mixed,
+       required:true
+   },
+   finishCond:{
+       type: mongoose.Mixed,
+       required: true
+   },
    keys: {},
    lessonText: {
        type: Array,
