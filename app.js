@@ -5,6 +5,7 @@ const logger = require('morgan')
 const passport = require('passport')
 
 const loginRouter = require('./routes/login')
+const apiRouter = require('./routes/api')
 
 const app = express()
 
@@ -16,7 +17,9 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(passport.initialize())
 require('./config/passport-github')
+require('./config/db')
 
 app.use('/login', loginRouter)
+app.use('/api', apiRouter)
 
 module.exports = app

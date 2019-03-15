@@ -15,8 +15,8 @@ const appUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_URL
 router
     .get('/github', passport.authenticate('github'))
     .get('/github/callback', passport.authenticate('github'), (req, res) => {
-        console.log(req.user)
-        res.send('hello')
+        const { id, displayName } = req.user.profile
+        res.send(`${id}, ${displayName}`)
     })
 
 
